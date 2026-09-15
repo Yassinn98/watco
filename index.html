@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<title>WATCO — Turnkey Sports Courts & Contracting</title>
+	<meta name="description" content="WATCO delivers turnkey sports courts, infrastructure and maintenance across Egypt and Africa. Contact us about tennis, football, padel and multipurpose courts." />
+	<meta property="og:title" content="WATCO — Turnkey Sports Courts & Contracting" />
+	<meta property="og:description" content="WATCO delivers turnkey sports courts, infrastructure and maintenance across Egypt and Africa." />
+	<meta property="og:type" content="website" />
+	<style>
+		:root{
+			/* Updated palette using logo colors: primary red and deep navy for a minimalist, Apple-like feel */
+			--brand-red:#c8102e;
+			--brand-navy:#0b3354;
+			--text:#0b1220;
+			--muted:#6b6f76;
+			--bg:#ffffff;
+			--surface:#fbfcfd;
+			--radius:12px;
+			--container:1100px;
+			--max-width:1200px;
+			--ff-sans:system-ui, -apple-system, 'Segoe UI', Inter, Roboto, 'Helvetica Neue', Arial;
+		}
+		*{box-sizing:border-box}
+		html,body{height:100%}
+		html{scroll-behavior:smooth}
+		body{font-family:var(--ff-sans);color:var(--text);background:var(--bg);margin:0;-webkit-font-smoothing:antialiased}
+		.site{max-width:var(--max-width);margin:0 auto;padding:24px}
+		header{display:flex;align-items:center;justify-content:space-between;padding:12px 0}
+		header.sticky{position:sticky;top:0;background:var(--bg);z-index:40;box-shadow:0 8px 24px rgba(11,19,30,0.06)}
+		.brand{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+		.logo{display:block}
+		.logo svg{height:44px;display:block}
+		.brand .tagline{font-size:13px;color:var(--muted);line-height:1;margin:0;font-weight:600;margin-left:2px}
+		.nav{display:flex;gap:18px;align-items:center}
+		.nav a{color:var(--text);text-decoration:none;font-weight:600}
+		/* Dropdown */
+		.nav .dropdown{position:relative}
+		.nav .dropdown > button{background:transparent;border:0;padding:6px 8px;font-weight:600;cursor:pointer}
+		.nav .menu{position:absolute;top:100%;left:0;background:var(--bg);border:1px solid #eef2f6;padding:8px;border-radius:8px;display:none;min-width:180px;box-shadow:0 8px 24px rgba(11,19,30,0.06)}
+		.nav .menu a{display:block;padding:8px 10px;color:var(--text);text-decoration:none}
+		.nav .dropdown:hover .menu{display:block}
+		.cta-primary{background:var(--brand-navy);color:#fff;padding:10px 14px;border-radius:12px;text-decoration:none;font-weight:700}
+		.cta-ghost{border:1px solid #e6e9ee;padding:8px 12px;border-radius:12px;text-decoration:none;color:var(--text)}
+		/* Hero */
+		.hero{display:grid;grid-template-columns:1fr 440px;gap:36px;align-items:center;padding:48px 0}
+		.hero h1{font-size:38px;margin:0 0 12px;line-height:1.04;font-weight:700;color:var(--brand-navy)}
+		.hero p{color:var(--muted);margin:0 0 20px;font-size:16px}
+		.hero .hero-visual{position:relative;border-radius:14px;background:var(--surface);height:320px;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid #f0f2f5}
+
+		/* Device / browser frame for hero video */
+		.device{position:relative;width:100%;height:100%;max-width:760px;border-radius:14px;box-shadow:0 18px 40px rgba(11,19,30,0.08);overflow:hidden;background:#fff;display:flex;flex-direction:column}
+		.device.browser{border-radius:12px;border:1px solid #e6eef7}
+		.device .top-bar{height:40px;display:flex;align-items:center;gap:12px;padding:0 12px;background:linear-gradient(180deg,#fbfdff,#f7fbff);border-bottom:1px solid #eef4fb}
+		.device .top-bar .circles{display:flex;gap:8px}
+		.device .top-bar .circles span{width:10px;height:10px;border-radius:50%;display:block}
+		.device .top-bar .circles span:nth-child(1){background:#ff5f57}
+		.device .top-bar .circles span:nth-child(2){background:#febc2e}
+		.device .top-bar .circles span:nth-child(3){background:#28c840}
+		.device .top-bar .address{color:var(--muted);font-size:13px;opacity:0.9}
+		.device .screen{flex:1;background:#000;display:flex;align-items:center;justify-content:center}
+		.device .screen video{width:100%;height:100%;object-fit:cover;display:block}
+			.device .device-controls{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;pointer-events:auto}
+			.device .device-controls .media-view-btn{position:static;top:auto;right:auto;background:rgba(0,0,0,0.6);color:#fff;padding:14px 16px;border-radius:50%;font-size:20px;box-shadow:0 10px 30px rgba(2,6,23,0.4);border:0;display:inline-flex;align-items:center;justify-content:center;min-width:56px;height:56px}
+			.device .device-controls .device-play-btn{background:rgba(0,0,0,0.7);color:#fff;border:0;padding:12px 14px;border-radius:50%;font-size:20px;min-width:56px;height:56px;display:inline-flex;align-items:center;justify-content:center;margin-right:10px}
+			/* magnify overlay inside the video control area */
+			.device .screen .video-magnify-btn{position:absolute;bottom:12px;right:12px;background:rgba(0,0,0,0.6);color:#fff;border:0;padding:8px 10px;border-radius:8px;font-size:15px;min-width:44px;height:44px;display:none;align-items:center;justify-content:center;z-index:6}
+			.device .screen.show-controls .video-magnify-btn{display:flex}
+		@media (max-width:1000px){
+			.device{max-width:540px}
+		}
+		@media (max-width:720px){
+			.device{max-width:100%;height:220px}
+			.device .top-bar{height:32px}
+		}
+		.hero .hero-visual img{width:100%;height:100%;object-fit:cover;display:block}
+		.hero .hero-visual .placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+		/* Overview stats */
+		.stats{display:flex;gap:18px;margin:22px 0}
+		.stat{background:#fff;border:1px solid #f0f0f0;padding:14px;border-radius:10px;min-width:140px;text-align:center}
+		.stat .n{font-weight:800;color:var(--brand-red);font-size:20px}
+		.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:28px 0}
+		.card{background:#fff;border-radius:12px;padding:18px;border:1px solid #f2f2f2}
+		.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:18px}
+		.product{display:flex;gap:14px;align-items:flex-start}
+		.product .icon{width:72px;height:72px;border-radius:12px;flex:0 0 72px;background:linear-gradient(180deg,var(--brand-navy),rgba(11,51,84,0.8));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff}
+		.product h4{margin:0 0 6px}
+		.features{list-style:none;padding:0;margin:8px 0 0;color:var(--muted)}
+		/* Capabilities */
+		.capabilities{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+		.cap{background:#fff;padding:16px;border-radius:10px;border:1px solid #f2f2f2;display:flex;gap:12px;align-items:flex-start}
+		.cap svg{flex:0 0 44px}
+		/* Process */
+		.process{display:flex;gap:12px;align-items:center;margin:24px 0}
+		.step{flex:1;background:#fff;padding:16px;border-radius:10px;border:1px solid #f2f2f2;text-align:center}
+		.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}
+		.project{height:140px;background:#f7f9fb;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:700}
+		.product-img{width:100%;height:160px;object-fit:cover;border-radius:8px;border:1px solid #eef3f7}
+
+		/* Carousel styles */
+		.carousel{position:relative;border-radius:8px;overflow:hidden;background:var(--surface);height:160px}
+		.slides{display:flex;transition:transform .36s ease-in-out;height:100%}
+		.slide{min-width:100%;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+		.carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.9);border:0;padding:8px 10px;border-radius:8px;cursor:pointer;box-shadow:0 2px 8px rgba(10,10,10,0.06)}
+		.carousel-btn.prev{left:8px}
+		.carousel-btn.next{right:8px}
+		.dots{position:absolute;left:50%;transform:translateX(-50%);bottom:8px;display:flex;gap:8px}
+		.dot{width:8px;height:8px;border-radius:50%;background:rgba(11,19,30,0.12);border:0;padding:0}
+		.dot.active{background:var(--brand-navy)}
+
+		/* Media view button (top-right) */
+		.media-view-btn{position:absolute;top:8px;right:8px;background:rgba(255,255,255,0.9);border:0;padding:6px 8px;border-radius:8px;cursor:pointer;box-shadow:0 6px 18px rgba(11,19,30,0.06);font-weight:700}
+
+		/* Product CTA: match top-right Inquire button color scheme */
+		.product-grid .cta-ghost{
+			display:inline-block;
+			padding:10px 14px;
+			border-radius:12px;
+			border:0;
+			margin-top:8px;
+			color:#fff;
+			background:var(--brand-navy);
+			text-decoration:none;
+			font-weight:700;
+		}
+		.product-grid .cta-ghost:hover{filter:brightness(0.95);box-shadow:0 10px 24px rgba(11,19,30,0.08)}
+
+		/* Lightbox overlay */
+		/* Ensure anchored sections are visible below sticky header */
+		section[id], h4[id], .card[id]{scroll-margin-top:88px}
+		#lightbox-overlay{position:fixed;inset:0;background:rgba(6,10,16,0.75);display:none;align-items:center;justify-content:center;z-index:1000;padding:24px}
+		#lightbox-overlay.open{display:flex}
+		#lightbox-content{max-width:calc(100% - 260px);max-height:calc(100% - 260px);background:transparent;display:flex;align-items:center;justify-content:center;position:relative}
+		#lightbox-content img, #lightbox-content video{max-width:100%;max-height:100%;border-radius:10px;box-shadow:0 12px 48px rgba(2,6,23,0.6)}
+		/* Lightbox nav */
+		.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.45);border:0;color:#fff;width:48px;height:48px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0.9}
+		.lightbox-nav.prev{left:12px}
+		.lightbox-nav.next{right:12px}
+		.lightbox-nav:hover{opacity:1;transform:translateY(-50%) scale(1.04)}
+		@media (max-width:720px){.lightbox-nav.prev{left:8px}.lightbox-nav.next{right:8px}}
+		#lightbox-close{position:absolute;top:18px;right:18px;background:#fff;border:0;border-radius:8px;padding:8px 10px;cursor:pointer}
+
+		@media (max-width:720px){
+			.carousel, .product-img{height:140px}
+			.carousel-btn{padding:6px}
+		}
+		/* Contact */
+		.contact-grid{display:grid;grid-template-columns:1fr 320px;gap:18px;margin:26px 0}
+		.contact-card{background:#fff;padding:18px;border-radius:10px;border:1px solid #eee}
+		footer{padding:28px 0;color:var(--muted);border-top:1px solid #f3f3f3;margin-top:32px}
+		/* Responsive */
+		@media (max-width:1000px){
+			.hero{grid-template-columns:1fr 1fr}
+			.grid{grid-template-columns:repeat(2,1fr)}
+			.site{padding:18px}
+		}
+		@media (max-width:720px){
+			.hero{grid-template-columns:1fr;gap:18px}
+			.product-grid{grid-template-columns:1fr}
+			.capabilities{grid-template-columns:1fr}
+			.projects{grid-template-columns:1fr}
+			.grid{grid-template-columns:1fr}
+			.contact-grid{grid-template-columns:1fr}
+			.nav{display:none}
+			.mobile-nav-toggle{display:inline-flex}
+		}
+		.mobile-nav-toggle{display:none;border:0;background:transparent;font-size:18px}
+		.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+	</style>
+</head>
+<body>
+	<div class="site" id="site">
+		<header>
+			<div class="brand">
+				<a href="#home" class="logo" aria-label="WATCO Home">
+					<svg viewBox="0 0 200 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+						<text x="0" y="28" fill="var(--brand-red)" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="28">WATCO</text>
+					</svg>
+				</a>
+				<div class="tagline">Contracting &amp; Sports Courts</div>
+			</div>
+
+			<nav class="nav" role="navigation" aria-label="Primary">
+				<div class="dropdown">
+					<button aria-haspopup="true" aria-expanded="false">Products ▾</button>
+					<div class="menu" role="menu">
+						<a role="menuitem" href="#football">Football Fields</a>
+						<a role="menuitem" href="#tennis">Tennis — Hard Courts</a>
+						<a role="menuitem" href="#multipurpose">Multipurpose Courts</a>
+						<a role="menuitem" href="#padel">Padel Tennis</a>
+					</div>
+				</div>
+				<a href="#who-we-are">About</a>
+				<a href="#contact">Contact</a>
+			</nav>
+
+			<div style="display:flex;gap:10px;align-items:center">
+				<a class="cta-primary" href="mailto:info@watco-eg.com?subject=Inquiry%20about%20sports%20courts">Inquire</a>
+				<button class="mobile-nav-toggle" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+			</div>
+		</header>
+
+		<main>
+			<section id="home" class="hero" aria-labelledby="hero-title">
+				<div>
+					<h1 id="hero-title">Engineering & Contracting — Turnkey Sports Courts and Infrastructure Since 1983</h1>
+					<p>Delivering durable, high-performance sports courts and turnkey construction solutions across Egypt and Africa — from synthetic turf football fields to padel and hard tennis courts.</p>
+					<div style="display:flex;gap:12px;align-items:center">
+						<a class="cta-primary" href="#contact">Inquire About Courts</a>
+						<a class="cta-ghost" href="#projects-addons">View Projects</a>
+					</div>
+
+					<div class="stats" aria-hidden="false">
+						<div class="stat"><div class="n">Since 1983</div><div class="muted">Operating</div></div>
+						<div class="stat"><div class="n">100+</div><div class="muted">Projects completed</div></div>
+						<div class="stat"><div class="n">14</div><div class="muted">Sports courts completed</div></div>
+					</div>
+				</div>
+
+				<div class="hero-visual" role="group" aria-label="Project media">
+					<div class="device browser" role="img" aria-label="Browser frame showing project video">
+						<div class="top-bar">
+							<div class="circles"><span></span><span></span><span></span></div>
+							<div class="address">watco-projects</div>
+						</div>
+						<div class="screen">
+							<video id="hero-video" src="assets/WhatsApp Video 2026-09-15 at 5.01.56 PM.mp4" poster="assets/WhatsApp Image 2026-09-15 at 5.01.56 PM.jpeg" playsinline muted preload="metadata"></video>
+						</div>
+						<div class="device-controls">
+							<button class="device-play-btn" aria-label="Play video">▶</button>
+							<!-- magnify control moved into video control area -->
+						</div>
+					</div>
+				</div>
+			</section>
+
+            
+
+			<section id="who-we-are" style="margin-top:18px">
+				<div style="display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start">
+					<div style="flex:1;min-width:300px">
+						<h2>Who we are</h2>
+						<p style="color:var(--muted)">Established in 1983, WATCO is an engineering and construction company focused on project management, contracting and industrial services. We specialize in the design, construction and maintenance of sports courts and deliver turnkey infrastructure projects for institutional and private clients.</p>
+
+						<div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+							<div class="card" style="min-width:160px"><strong>100+</strong><div style="color:var(--muted);font-size:13px">Projects across Egypt &amp; Africa</div></div>
+							<div class="card" style="min-width:160px"><strong>20+</strong><div style="color:var(--muted);font-size:13px">Steel hangars constructed</div></div>
+							<div class="card" style="min-width:160px"><strong>14</strong><div style="color:var(--muted);font-size:13px">Sports courts completed</div></div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="products" style="margin-top:28px">
+				<h2 style="font-size:28px;letter-spacing:-0.4px;margin-bottom:6px">Products &amp; Solutions</h2>
+				<p style="margin-top:0;color:var(--muted);font-size:15px">Explore our premium sports court types. Click each card to view gallery and inquire.</p>
+				<p style="color:var(--muted)">Premium sports courts and complementary equipment — built for durability, performance and low maintenance.</p>
+
+				<div class="product-grid">
+					<div class="card" id="product-football">
+						<div class="carousel" data-images="WhatsApp Image 2026-09-15 at 5.01.54 PM (6).jpeg,WhatsApp Image 2026-09-15 at 5.01.54 PM (7).jpeg,WhatsApp Image 2026-09-15 at 5.01.55 PM (2).jpeg,WhatsApp Image 2026-09-15 at 5.01.55 PM (3).jpeg,WhatsApp Image 2026-09-15 at 5.01.57 PM (2).jpeg" style="position:relative">
+							<button class="media-view-btn" aria-hidden="true" title="View gallery">🔍</button>
+							<div class="slides" aria-hidden="false"></div>
+							<button class="carousel-btn prev" aria-label="Previous">‹</button>
+							<button class="carousel-btn next" aria-label="Next">›</button>
+							<div class="dots" aria-hidden="true"></div>
+						</div>
+						<div style="margin-top:12px">
+							  <h4 id="football">Football Fields</h4>
+							<div style="color:var(--muted);font-size:14px">4 fields completed</div>
+							<ul class="features">
+								<li>Materials: Synthetic turf with UV-resistant fibers and infill</li>
+								<li>Durability & low maintenance</li>
+								<li>Consistent ball roll and player traction</li>
+							</ul>
+							<div style="margin-top:10px"><a class="cta-ghost" href="mailto:info@watco-eg.com?subject=Quotation%20Request%20-%20Football%20Fields&body=Hello%20WATCO%20team%2C%0D%0A%0D%0AI%20would%20like%20to%20request%20a%20quotation%20for%3A%20Football%20Fields%0D%0A%0D%0AProject%20details%3A%0D%0A-%20Quantity%2Fnumber%20of%20fields%3A%0D%0A-%20Preferred%20location%2Fsite%20address%3A%0D%0A-%20Preferred%20surface%3A%0D%0A-%20Required%20timeline%3A%0D%0A-%20Additional%20systems%20(fencing%2C%20lighting%2C%20netting)%3A%0D%0A-%20Budget%20(optional)%3A%0D%0A-%20Contact%20name%3A%0D%0A-%20Contact%20phone%3A%0D%0A%0D%0APlease%20advise%20next%20steps%20and%20site%20visit%20availability.%0D%0A%0D%0ARegards%2C">Request Quotation</a></div>
+						</div>
+					</div>
+
+											<div class="card" id="product-tennis">
+												<div class="carousel" data-images="WhatsApp Image 2026-09-15 at 5.01.50 PM (2).jpeg,WhatsApp Image 2026-09-15 at 5.01.50 PM (3).jpeg,WhatsApp Image 2026-09-15 at 5.01.51 PM (1).jpeg,WhatsApp Image 2026-09-15 at 5.01.51 PM.jpeg,WhatsApp Image 2026-09-15 at 5.01.57 PM (1).jpeg">
+							<div class="slides"></div>
+							<button class="carousel-btn prev" aria-label="Previous">‹</button>
+							<button class="carousel-btn next" aria-label="Next">›</button>
+							<div class="dots"></div>
+						</div>
+						<div style="margin-top:12px">
+							  <h4 id="tennis">Tennis — Hard Courts</h4>
+							<div style="color:var(--muted);font-size:14px">4 courts completed</div>
+							<ul class="features">
+								<li>Asphalt or concrete base with acrylic surface coating</li>
+								<li>Durable, low-maintenance playing surface</li>
+								<li>Suitable for recreational and professional play</li>
+							</ul>
+							<div style="margin-top:10px"><a class="cta-ghost" href="mailto:info@watco-eg.com?subject=Quotation%20Request%20-%20Tennis%20Hard%20Courts&body=Hello%20WATCO%20team%2C%0D%0A%0D%0AI%20would%20like%20to%20request%20a%20quotation%20for%3A%20Tennis%20-%20Hard%20Courts%0D%0A%0D%0AProject%20details%3A%0D%0A-%20Quantity%2Fnumber%20of%20courts%3A%0D%0A-%20Preferred%20location%2Fsite%20address%3A%0D%0A-%20Preferred%20surface%20type%3A%0D%0A-%20Required%20timeline%3A%0D%0A-%20Additional%20systems%20(nets%2C%20lighting)%3A%0D%0A-%20Budget%20(optional)%3A%0D%0A-%20Contact%20name%3A%0D%0A-%20Contact%20phone%3A%0D%0A%0D%0APlease%20advise%20next%20steps%20and%20site%20visit%20availability.%0D%0A%0D%0ARegards%2C">Request Quotation</a></div>
+						</div>
+					</div>
+
+											<div class="card" id="product-multipurpose">
+												<div class="carousel" data-images="WhatsApp Image 2026-09-15 at 5.01.53 PM (2).jpeg,WhatsApp Image 2026-09-15 at 5.01.54 PM (3).jpeg,WhatsApp Image 2026-09-15 at 5.01.54 PM (4).jpeg,WhatsApp Image 2026-09-15 at 5.01.54 PM (5).jpeg,WhatsApp Image 2026-09-15 at 5.01.54 PM.jpeg">
+							<div class="slides"></div>
+							<button class="carousel-btn prev" aria-label="Previous">‹</button>
+							<button class="carousel-btn next" aria-label="Next">›</button>
+							<div class="dots"></div>
+						</div>
+						<div style="margin-top:12px">
+							  <h4 id="multipurpose">Multipurpose Courts</h4>
+							<div style="color:var(--muted);font-size:14px">(Handball × Basketball) — 4 courts completed</div>
+							<ul class="features">
+								<li>Concrete base with acrylic coating</li>
+								<li>Versatile layout for multiple sports</li>
+								<li>Designed for heavy use and longevity</li>
+							</ul>
+							<div style="margin-top:10px"><a class="cta-ghost" href="mailto:info@watco-eg.com?subject=Quotation%20Request%20-%20Multipurpose%20Courts&body=Hello%20WATCO%20team%2C%0D%0A%0D%0AI%20would%20like%20to%20request%20a%20quotation%20for%3A%20Multipurpose%20Courts%0D%0A%0D%0AProject%20details%3A%0D%0A-%20Quantity%2Fnumber%20of%20courts%3A%0D%0A-%20Preferred%20location%2Fsite%20address%3A%0D%0A-%20Preferred%20surface%3A%0D%0A-%20Required%20timeline%3A%0D%0A-%20Additional%20systems%20(fencing%2C%20lighting)%3A%0D%0A-%20Budget%20(optional)%3A%0D%0A-%20Contact%20name%3A%0D%0A-%20Contact%20phone%3A%0D%0A%0D%0APlease%20advise%20next%20steps%20and%20site%20visit%20availability.%0D%0A%0D%0ARegards%2C">Request Quotation</a></div>
+						</div>
+					</div>
+
+				      <div class="card" id="product-padel">
+						<div class="carousel" data-images="WhatsApp Image 2026-09-15 at 5.01.55 PM (2).jpeg,WhatsApp Image 2026-09-15 at 5.01.55 PM (3).jpeg,WhatsApp Image 2026-09-15 at 5.01.55 PM.jpeg,WhatsApp Image 2026-09-15 at 5.01.56 PM (1).jpeg,WhatsApp Image 2026-09-15 at 5.01.56 PM (2).jpeg,WhatsApp Image 2026-09-15 at 5.01.56 PM.jpeg">
+							<div class="slides"></div>
+							<button class="carousel-btn prev" aria-label="Previous">‹</button>
+							<button class="carousel-btn next" aria-label="Next">›</button>
+							<div class="dots"></div>
+						</div>
+						<div style="margin-top:12px">
+							  <h4 id="padel">Padel Tennis</h4>
+							<div style="color:var(--muted);font-size:14px">2 courts currently under-construction</div>
+							<ul class="features">
+								<li>Synthetic turf with sand infill, tempered glass, metal mesh walls</li>
+								<li>Engineered for consistent bounce and player comfort</li>
+								<li>Modern aesthetic design</li>
+							</ul>
+							<div style="margin-top:10px"><a class="cta-ghost" href="mailto:info@watco-eg.com?subject=Quotation%20Request%20-%20Padel%20Courts&body=Hello%20WATCO%20team%2C%0D%0A%0D%0AI%20would%20like%20to%20request%20a%20quotation%20for%3A%20Padel%20Courts%0D%0A%0D%0AProject%20details%3A%0D%0A-%20Quantity%2Fnumber%20of%20courts%3A%0D%0A-%20Preferred%20location%2Fsite%20address%3A%0D%0A-%20Preferred%20turf%20type%3A%0D%0A-%20Required%20timeline%3A%0D%0A-%20Additional%20systems%20(glass%2C%20mesh%2C%20lighting)%3A%0D%0A-%20Budget%20(optional)%3A%0D%0A-%20Contact%20name%3A%0D%0A-%20Contact%20phone%3A%0D%0A%0D%0APlease%20advise%20next%20steps%20and%20site%20visit%20availability.%0D%0A%0D%0ARegards%2C">Request Quotation</a></div>
+						</div>
+					</div>
+					</div>
+				</section>
+
+				<section id="projects-addons" style="margin-top:22px">
+					<h3 style="margin-bottom:8px">Projects &amp; Add‑ons</h3>
+					<p style="color:var(--muted);margin-top:0">Selected projects, systems and add-ons we supply. Click images to view full-size.</p>
+					<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:12px">
+							<div class="card" style="position:relative;overflow:hidden">
+								<img src="assets/square.JPG" alt="Project: fencing system" style="width:100%;height:160px;object-fit:cover;border-radius:8px">
+								<button class="media-view-btn" data-type="image" data-src="assets/square.JPG" aria-label="View fencing image">🔍</button>
+								<div style="margin-top:8px"><strong>Fencing Systems</strong><div style="color:var(--muted);font-size:13px">Durable perimeter systems for courts and venues.</div></div>
+							</div>
+						<div class="card" style="position:relative;overflow:hidden">
+							<img src="assets/WhatsApp Image 2026-09-15 at 5.01.51 PM.jpeg" alt="Project: nets and goals" style="width:100%;height:160px;object-fit:cover;border-radius:8px">
+								<button class="media-view-btn" data-type="image" data-src="assets/WhatsApp Image 2026-09-15 at 5.01.51 PM.jpeg" aria-label="View nets image">🔍</button>
+							<div style="margin-top:8px"><strong>Nets &amp; Goals</strong><div style="color:var(--muted);font-size:13px">Sport-specific nets and goal systems for installations.</div></div>
+						</div>
+						<div class="card" style="position:relative;overflow:hidden">
+							<img src="assets/WhatsApp Image 2026-09-15 at 5.01.55 PM (1).jpeg" alt="Project: lighting installation" style="width:100%;height:160px;object-fit:cover;border-radius:8px">
+							<button class="media-view-btn" data-type="image" data-src="assets/WhatsApp Image 2026-09-15 at 5.01.55 PM (1).jpeg" aria-label="View lighting image">🔍</button>
+							<div style="margin-top:8px"><strong>Lighting</strong><div style="color:var(--muted);font-size:13px">Optimized LED lighting solutions for evening play.</div></div>
+						</div>
+					</div>
+				</section>
+		</main>
+
+		<footer id="contact">
+			<div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:18px">
+				<div style="min-width:260px">
+					<div style="font-weight:700;margin-bottom:8px">WATCO for Contracting, trade and commercial agencies</div>
+					<div style="color:var(--muted)">Address: 125 El Merghani St, Heliopolis</div>
+					<div style="color:var(--muted);margin-top:6px">Fax: +0224159706</div>
+					<div style="color:var(--muted);margin-top:6px">Email: <a href="mailto:info@watco-eg.com">info@watco-eg.com</a></div>
+				</div>
+
+				<div style="min-width:260px">
+					<div style="font-weight:700">Managing Director</div>
+					<div style="color:var(--muted);margin-top:6px">Eng. Wael Gamal — Mobile: <a href="tel:+201005411057">+20 100 541 1057</a></div>
+				</div>
+
+				<div style="min-width:260px">
+					<div style="font-weight:700">For sport courts inquiries</div>
+					<ul style="margin:8px 0 0;padding-left:18px;color:var(--muted)">
+						<li>Eng. Seif Wael — Mobile: <a href="tel:+201116899898">+20 111 689 9898</a></li>
+						<li>Eng. Yassin Adel — Mobile: <a href="tel:+201023350006">+20 102 335 0006</a></li>
+						<li>Seif Aziz — Mobile: <a href="tel:+201099992286">+20 109 999 2286</a></li>
+					</ul>
+				</div>
+
+				<div style="flex-basis:100%;height:1px;background:#f3f3f3;margin-top:14px"></div>
+
+				<div style="display:flex;justify-content:space-between;align-items:center;flex:1;gap:12px;flex-wrap:wrap">
+					<div>© WATCO — Engineering &amp; Contracting</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	<script>
+		// Mobile nav toggle (progressive enhancement)
+		(function(){
+			const btn = document.querySelector('.mobile-nav-toggle');
+			if(!btn) return;
+			btn.addEventListener('click', ()=>{
+				const nav = document.querySelector('.nav');
+				const expanded = btn.getAttribute('aria-expanded') === 'true';
+				btn.setAttribute('aria-expanded', String(!expanded));
+				if(nav){
+					nav.style.display = expanded ? 'none' : 'flex';
+					nav.style.flexDirection = 'column';
+					nav.style.gap = '12px';
+					nav.style.position = 'absolute';
+					nav.style.right = '24px';
+					nav.style.top = '68px';
+					nav.style.background = '#fff';
+					nav.style.padding = '12px';
+					nav.style.borderRadius = '8px';
+					nav.style.boxShadow = '0 6px 18px rgba(16,24,40,0.08)';
+				}
+			});
+		})();
+
+		// Sticky header behavior: add/remove sticky class on load for consistent rendering
+		(function(){
+			const header = document.querySelector('header');
+			if(!header) return;
+			header.classList.add('sticky');
+			// add small scroll shadow toggle for older browsers
+			window.addEventListener('scroll', ()=>{
+				if(window.scrollY>10) header.classList.add('scrolled'); else header.classList.remove('scrolled');
+			});
+		})();
+
+		// Dropdown click handling for touch accessibility
+		(function(){
+			const dropdowns = document.querySelectorAll('.nav .dropdown');
+			dropdowns.forEach(dd=>{
+				const btn = dd.querySelector('button, .dropdown-toggle');
+				const menu = dd.querySelector('.menu');
+				if(!btn || !menu) return;
+				btn.addEventListener('click', (e)=>{
+					// If the toggle is an anchor and we're on desktop, allow it to navigate to #products
+					if(btn.matches && btn.matches('a.dropdown-toggle') && window.innerWidth > 720){
+						return; // let the anchor navigate
+					}
+					e.preventDefault();
+					const expanded = btn.getAttribute('aria-expanded') === 'true';
+					btn.setAttribute('aria-expanded', String(!expanded));
+					menu.style.display = expanded ? 'none' : 'block';
+					e.stopPropagation();
+				});
+			});
+			document.addEventListener('click', ()=>{
+				document.querySelectorAll('.nav .dropdown .menu').forEach(m=>m.style.display='none');
+				document.querySelectorAll('.nav .dropdown > button, .nav .dropdown > .dropdown-toggle').forEach(b=>b.setAttribute('aria-expanded','false'));
+			});
+		})();
+
+		// Carousel initialization for product cards
+		(function(){
+			// Lightbox / overlay for media viewing
+			// gallery-aware lightbox: openLightbox(type, srcOrArray, index)
+			let _lightboxState = {gallery:[],index:0};
+			function openLightbox(type, srcOrArray, index = 0){
+				const gallery = Array.isArray(srcOrArray) ? srcOrArray.slice() : [srcOrArray];
+				if(!gallery || gallery.length === 0) return;
+				_lightboxState.gallery = gallery;
+				_lightboxState.index = Math.max(0, Math.min(index || 0, gallery.length-1));
+
+				let overlay = document.getElementById('lightbox-overlay');
+				if(!overlay){
+					overlay = document.createElement('div');
+					overlay.id = 'lightbox-overlay';
+					const content = document.createElement('div'); content.id = 'lightbox-content';
+					overlay.appendChild(content);
+					const close = document.createElement('button'); close.id = 'lightbox-close'; close.innerText = 'Close';
+					overlay.appendChild(close);
+					// nav buttons
+					const prev = document.createElement('button'); prev.className = 'lightbox-nav prev'; prev.innerText = '‹';
+					const next = document.createElement('button'); next.className = 'lightbox-nav next'; next.innerText = '›';
+					// append nav into content so they're positioned relative to the media
+					content.appendChild(prev); content.appendChild(next);
+					document.body.appendChild(overlay);
+
+					function stopAndClear(){
+						const media = content.querySelector('video'); if(media){ media.pause(); media.src=''; }
+						content.innerHTML = '';
+					}
+
+					close.addEventListener('click', ()=>{ overlay.classList.remove('open'); stopAndClear(); });
+					overlay.addEventListener('click', (e)=>{ if(e.target === overlay) { overlay.classList.remove('open'); stopAndClear(); } });
+
+					prev.addEventListener('click', (e)=>{ e.stopPropagation(); showLightboxIndex(_lightboxState.index-1); });
+					next.addEventListener('click', (e)=>{ e.stopPropagation(); showLightboxIndex(_lightboxState.index+1); });
+
+					document.addEventListener('keydown', function lbKeys(e){
+						if(!document.getElementById('lightbox-overlay')?.classList.contains('open')) return;
+						if(e.key === 'Escape'){ overlay.classList.remove('open'); stopAndClear(); }
+						else if(e.key === 'ArrowLeft'){ showLightboxIndex(_lightboxState.index-1); }
+						else if(e.key === 'ArrowRight'){ showLightboxIndex(_lightboxState.index+1); }
+					});
+				}
+
+				const content = document.getElementById('lightbox-content');
+
+				function showLightboxIndex(i){
+					const gallery = _lightboxState.gallery;
+					if(!gallery || gallery.length === 0) return;
+					_lightboxState.index = (i + gallery.length) % gallery.length;
+					const src = gallery[_lightboxState.index];
+					// clear (pause any existing video first)
+					const existingVideo = content.querySelector('video'); if(existingVideo){ existingVideo.pause(); existingVideo.src = ''; }
+					content.innerHTML = '';
+					if(typeof src === 'string' && src.match(/\.mp4$|\.webm$|\.ogg$/i) || src.startsWith('data:video')){
+						const v = document.createElement('video'); v.src = src; v.controls = true; v.autoplay = true; v.playsInline = true; v.style.maxHeight='100%';
+						content.appendChild(v);
+					}else{
+						const img = document.createElement('img'); img.src = src; img.alt = ''; img.style.cursor='zoom-out';
+						// click on image -> go next
+						img.addEventListener('click', ()=> showLightboxIndex(_lightboxState.index+1));
+						content.appendChild(img);
+					}
+					// ensure overlay visible
+					document.getElementById('lightbox-overlay').classList.add('open');
+				}
+
+				// set gallery and show initial
+				_lightboxState.gallery = gallery;
+				showLightboxIndex(_lightboxState.index);
+			}
+
+			function createImageEl(src, alt){
+				const img = document.createElement('img');
+				img.src = 'assets/' + src.trim();
+				img.alt = alt || '';
+				img.className = 'product-img';
+				img.onerror = function(){ this.style.opacity = 0.45 };
+				return img;
+			}
+
+			const carousels = document.querySelectorAll('.carousel');
+			carousels.forEach((carousel, idx)=>{
+				// attach view button handlers for non-static buttons inside carousel (created in markup)
+				let carouselViewBtn = carousel.querySelector('.media-view-btn');
+				const slidesEl = carousel.querySelector('.slides');
+				const dotsEl = carousel.querySelector('.dots');
+				const prev = carousel.querySelector('.prev');
+				const next = carousel.querySelector('.next');
+				const images = (carousel.getAttribute('data-images')||'').split(',').map(s=>s.trim()).filter(Boolean);
+				let current = 0;
+
+				// build slides
+				images.forEach((imgName,i)=>{
+					const slide = document.createElement('div');
+					slide.className = 'slide';
+					const img = createImageEl(imgName, carousel.closest('.card')?.querySelector('h4')?.textContent || '');
+					slide.appendChild(img);
+					slidesEl.appendChild(slide);
+					const dot = document.createElement('button');
+					dot.className = 'dot';
+					dot.setAttribute('aria-label', `Go to image ${i+1}`);
+					dotsEl.appendChild(dot);
+				});
+
+				// ensure there's a visible gallery view button for this carousel
+				if(!carouselViewBtn){
+					const vb = document.createElement('button');
+					vb.className = 'media-view-btn';
+					vb.setAttribute('aria-label','View gallery');
+					vb.title = 'View gallery';
+					// insert as first child so absolute positioning works
+					carousel.insertBefore(vb, carousel.firstChild);
+					carouselViewBtn = vb;
+				}
+
+				// make slides clickable to open lightbox directly
+				Array.from(slidesEl.children).forEach((slideEl, i)=>{
+					const img = slideEl.querySelector('img');
+					if(img){
+						img.style.cursor = 'zoom-in';
+						img.addEventListener('click', ()=>{
+							const imgName = images[i];
+							if(imgName) openLightbox('image', images.map(n=> 'assets/' + n), i);
+						});
+					}
+				});
+
+				const slideCount = images.length;
+				if(slideCount <= 1){ prev.style.display = 'none'; next.style.display = 'none'; dotsEl.style.display = 'none'; }
+
+				function show(n){
+					current = (n + slideCount) % slideCount;
+					slidesEl.style.transform = `translateX(${-current * 100}%)`;
+					// update dots
+					Array.from(dotsEl.children).forEach((d, i)=> d.classList.toggle('active', i===current));
+					// update carousel view button tooltip if present
+					if(carouselViewBtn) carouselViewBtn.title = `View image ${current+1}`;
+				}
+
+				prev.addEventListener('click', ()=> show(current-1));
+				next.addEventListener('click', ()=> show(current+1));
+				Array.from(dotsEl.children).forEach((d, i)=> d.addEventListener('click', ()=> show(i)));
+				// wire carousel view button to open the current image in lightbox
+				if(carouselViewBtn){
+					carouselViewBtn.addEventListener('click', ()=>{
+						openLightbox('image', images.map(n=> 'assets/' + n), current);
+					});
+				}
+
+				// initial
+				show(0);
+			});
+
+			// Attach handlers to non-carousel media view buttons (hero, projects gallery)
+			document.querySelectorAll('.media-view-btn').forEach(btn=>{
+				if(btn.closest('.carousel')) return; // carousel buttons are wired separately
+				btn.addEventListener('click', ()=>{
+					const type = btn.dataset.type || 'image';
+					const src = btn.dataset.src;
+					if(src) openLightbox(type, [src], 0);
+				});
+			});
+
+			// Ensure product CTA mailto links open reliably and improve spacing
+			document.querySelectorAll('.product-grid .cta-ghost[href^="mailto:"]').forEach(a=>{
+				a.addEventListener('click', (e)=>{
+					// force navigation to mailto if default prevented or client ignores anchor
+					const href = a.getAttribute('href');
+					if(!href) return;
+					// some browsers block programmatic mailto; attempt several fallbacks
+					try{ window.location.href = href; }catch(err){ window.open(href); }
+					// no harm in allowing default behavior
+				});
+			});
+
+			// Device (hero) in-place play controls: toggle native controls and play/pause without magnifying
+			(function(){
+				const heroVideo = document.getElementById('hero-video');
+				const playBtn = document.querySelector('.device .device-play-btn');
+				if(!heroVideo || !playBtn) return;
+				playBtn.addEventListener('click', ()=>{
+					if(heroVideo.paused){
+						heroVideo.muted = false;
+						heroVideo.controls = true;
+						heroVideo.play().catch(()=>{});
+						playBtn.innerText = '❚❚';
+					}else{
+						heroVideo.pause();
+						playBtn.innerText = '▶';
+					}
+				});
+				heroVideo.addEventListener('play', ()=> playBtn.innerText = '❚❚');
+				heroVideo.addEventListener('pause', ()=> playBtn.innerText = '▶');
+				heroVideo.addEventListener('ended', ()=> playBtn.innerText = '▶');
+
+
+				// create magnify overlay inside the video screen when controls are enabled
+				const screen = document.querySelector('.device .screen');
+				if(screen){
+					let mag = screen.querySelector('.video-magnify-btn');
+					if(!mag){
+						mag = document.createElement('button');
+						mag.className = 'video-magnify-btn';
+						mag.setAttribute('aria-label','Open video in lightbox');
+						mag.innerText = '⤢';
+						screen.appendChild(mag);
+					}
+					// show/hide based on whether native controls are present
+					heroVideo.addEventListener('loadedmetadata', ()=>{
+						if(heroVideo.controls) screen.classList.add('show-controls');
+					});
+					heroVideo.addEventListener('play', ()=>{ if(heroVideo.controls) screen.classList.add('show-controls'); });
+					heroVideo.addEventListener('pause', ()=>{ if(heroVideo.controls) screen.classList.add('show-controls'); });
+					// in case controls toggled by play button
+					const observer = new MutationObserver(()=>{
+						if(heroVideo.controls) screen.classList.add('show-controls'); else screen.classList.remove('show-controls');
+					});
+					observer.observe(heroVideo, {attributes:true,attributeFilter:['controls']});
+
+					mag.addEventListener('click', (e)=>{
+						e.stopPropagation();
+						openLightbox('video', [heroVideo.currentSrc || heroVideo.src], 0);
+					});
+				}
+			})();
+
+		})();
+
+		</script>
+	</body>
+	</html>
